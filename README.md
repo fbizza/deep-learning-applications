@@ -78,13 +78,15 @@ In this exercise, we build a simple **Out-of-Distribution (OOD) detection pipeli
 The maximum softmax probability is used for representing how OOD a test sample is. It is produced by a custom small CNN and a pretrained ResNet-20 model.
 <div align="center">
  
-| Custom CNN | ResNet |
-|--------------------|---------------|
-| <div align="center"> <img width="300" src="https://github.com/user-attachments/assets/9a2b83fa-3637-4608-bfd7-0504e6b5af4b" /> </div> | <div align="center"> <img width="300" alt="histogram" src="https://github.com/user-attachments/assets/136e60d5-5e2b-43ba-9f94-22daeab0c7bf" /> </div> |
-| <div align="center"> <img width="300" alt="auc" src="https://github.com/user-attachments/assets/fb2859fa-ce9d-4092-8073-2f47b9250f5e" /> </div> | <div align="center"> <img width="300" alt="auc" src="https://github.com/user-attachments/assets/9f13616b-4b9d-4c59-8fac-2b4b122deaff" /> </div> |
-| <div align="center"> <img width="300" alt="ap" src="https://github.com/user-attachments/assets/23978d0a-7333-416c-8f4a-2b3acf51eb22" /> </div> | <div align="center"> <img width="300" alt="ap" src="https://github.com/user-attachments/assets/31c0fa1f-41d7-4c8e-9d9e-f81e7432e2fc" />
+|  | Custom CNN | ResNet |
+|-----------|---------|---------------|
+| **Histogram** |<div align="center"> <img width="300" src="https://github.com/user-attachments/assets/9a2b83fa-3637-4608-bfd7-0504e6b5af4b" /> </div> | <div align="center"> <img width="300" alt="histogram" src="https://github.com/user-attachments/assets/136e60d5-5e2b-43ba-9f94-22daeab0c7bf" /> </div> |
+| **ROC curve**| <div align="center"> <img width="300" alt="auc" src="https://github.com/user-attachments/assets/fb2859fa-ce9d-4092-8073-2f47b9250f5e" /> </div> | <div align="center"> <img width="300" alt="auc" src="https://github.com/user-attachments/assets/9f13616b-4b9d-4c59-8fac-2b4b122deaff" /> </div> |
+| **PR curve** | <div align="center"> <img width="300" alt="ap" src="https://github.com/user-attachments/assets/23978d0a-7333-416c-8f4a-2b3acf51eb22" /> </div> | <div align="center"> <img width="300" alt="ap" src="https://github.com/user-attachments/assets/31c0fa1f-41d7-4c8e-9d9e-f81e7432e2fc" />
 
 </div>
+
+As shown in the plots, the ResNet performs better. This is expected since it also achieves higher classification accuracy on CIFAR-10 (81%) compared to the smaller custom CNN (64%).
 
 
 
