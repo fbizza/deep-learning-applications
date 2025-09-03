@@ -1,4 +1,5 @@
-# Work in progress.  La repo sarà completa prima della scadenza all'iscrizione dell'appello.
+# deep-learning-applications
+This repository contains the code developed to solve the exercises for the Deep Learning Applications course (2024/25). The results are presented below
 <h1 align="center">Laboratory 1</h1>
 
 ## Exercise 1.1 and 1.2
@@ -67,3 +68,26 @@ We also apply CAM to a pre-trained ResNet-18 on images from the Imagenette datas
 <img width="1000" alt="imagenette_cam_6images" src="https://github.com/user-attachments/assets/75fb30ff-de0c-4856-b595-dc0a002c43e8" />
 </p>
 <p align="center">
+
+
+<h1 align="center">Laboratory 4</h1>
+
+## Exercise 1.1
+In this exercise, we build a simple **Out-of-Distribution (OOD) detection pipeline**. The in distribution (ID) used dataset is CIFAR-10, while the OOD datasets are a subset of CIFAR-100 (with classes not present in CIFAR-10) and randomly generated FakeData. For brevity only results using CIFAR-100 are discussed.
+
+The maximum softmax probability is used for representing how OOD a test sample is. It is produced by a custom small CNN and a pretrained ResNet-20 model.
+<div align="center">
+ 
+| Custom CNN | ResNet |
+|--------------------|---------------|
+| <div align="center"> <img width="300" src="https://github.com/user-attachments/assets/9a2b83fa-3637-4608-bfd7-0504e6b5af4b" /> </div> | <div align="center"> <img width="300" alt="histogram" src="https://github.com/user-attachments/assets/136e60d5-5e2b-43ba-9f94-22daeab0c7bf" /> </div> |
+| <div align="center"> <img width="300" alt="auc" src="https://github.com/user-attachments/assets/fb2859fa-ce9d-4092-8073-2f47b9250f5e" /> </div> | <div align="center"> <img width="300" alt="auc" src="https://github.com/user-attachments/assets/9f13616b-4b9d-4c59-8fac-2b4b122deaff" /> </div> |
+| <div align="center"> <img width="300" alt="ap" src="https://github.com/user-attachments/assets/23978d0a-7333-416c-8f4a-2b3acf51eb22" /> </div> | <div align="center"> <img width="300" alt="ap" src="https://github.com/user-attachments/assets/31c0fa1f-41d7-4c8e-9d9e-f81e7432e2fc" />
+
+</div>
+
+
+
+
+
+TODO: add note about use of genAI
