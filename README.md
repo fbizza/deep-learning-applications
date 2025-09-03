@@ -1,4 +1,5 @@
-# Work in progress.  La repo sarà completa prima della scadenza all'iscrizione dell'appello.
+# deep-learning-applications
+This repository contains the code developed to solve the exercises for the Deep Learning Applications course (2024/25). The results are presented below
 <h1 align="center">Laboratory 1</h1>
 
 ## Exercise 1.1 and 1.2
@@ -67,3 +68,89 @@ We also apply CAM to a pre-trained ResNet-18 on images from the Imagenette datas
 <img width="1000" alt="imagenette_cam_6images" src="https://github.com/user-attachments/assets/75fb30ff-de0c-4856-b595-dc0a002c43e8" />
 </p>
 <p align="center">
+
+
+<h1 align="center">Laboratory 4</h1>
+
+## Exercise 1
+In this exercise, we build a simple **Out-of-Distribution (OOD) detection pipeline**. The dataset used for in distribution (ID) examples is CIFAR-10, while the OOD datasets are a subset of CIFAR-100 (with classes not present in CIFAR-10) and randomly generated FakeData. For brevity only results using CIFAR-100 are discussed.
+
+The maximum softmax probability is used for representing how OOD a test sample is. It is produced by a custom small CNN and a pretrained ResNet-20 model.
+<div align="center">
+ 
+|  | Custom CNN | ResNet |
+|-----------|---------|---------------|
+| **Histogram** |<div align="center"> <img width="300" src="https://github.com/user-attachments/assets/9a2b83fa-3637-4608-bfd7-0504e6b5af4b" /> </div> | <div align="center"> <img width="300" alt="histogram" src="https://github.com/user-attachments/assets/136e60d5-5e2b-43ba-9f94-22daeab0c7bf" /> </div> |
+| **ROC curve**| <div align="center"> <img width="300" alt="auc" src="https://github.com/user-attachments/assets/fb2859fa-ce9d-4092-8073-2f47b9250f5e" /> </div> | <div align="center"> <img width="300" alt="auc" src="https://github.com/user-attachments/assets/9f13616b-4b9d-4c59-8fac-2b4b122deaff" /> </div> |
+| **PR curve** | <div align="center"> <img width="300" alt="ap" src="https://github.com/user-attachments/assets/23978d0a-7333-416c-8f4a-2b3acf51eb22" /> </div> | <div align="center"> <img width="300" alt="ap" src="https://github.com/user-attachments/assets/31c0fa1f-41d7-4c8e-9d9e-f81e7432e2fc" />
+
+</div>
+
+As shown in the plots, the ResNet performs better. This is expected since it also achieves higher classification accuracy on CIFAR-10 (81%) compared to the smaller custom CNN (64%).
+
+## Exercise 2.1
+
+In this exercise the **FGSM** method is used to generate adversarial examples. The model used  is the custom CNN introduced in the previous exercise.
+Here are shown some examples of adversarial attacks generated with an *epsilon* = 1/255:
+<div align="center">
+<img width="700" alt="output1" src="https://github.com/user-attachments/assets/b61235e5-a3d7-419f-8c4a-d0bbdee131c9" />
+</div>
+
+<div align="center">
+<img width="700" alt="output2" src="https://github.com/user-attachments/assets/cf5e0587-9e5c-4080-9692-8c81e84e2c39" />
+</div>
+
+
+I used 3 metrics in order to evaluate how dependent on *epsilon* the generated adversarial images are:
+
+- Attack success rate
+- Average iterations to success
+- Average confidence drop
+  
+
+<img width="900"  alt="quantitative_eval" src="https://github.com/user-attachments/assets/486d67e3-cdfd-4f95-bb53-0a4c2c4a3a4f" />
+
+As expected bigger *epsilons* produce more powerful (but also more noticeable) attacks 
+
+## Exercise 2.1
+
+In this exercise FGSM adversarial samples are used to augment the training dataset used to train the the OOD detector model. 
+The way i implemented this augmented training is by using a weighted loss function in the training loop. For each batch, I compute the loss on both the original (clean) inputs and the adversarially perturbed inputs, then combine them to form a single loss. The weights of the loss components are hyperparameters. 
+
+For an equally weighted loss, **loss = 0.5 * clean_loss + 0.5 * adv_loss**, there is a slight improvement of about 2% in both the ROC and PR curves. 
+
+<div align="center">
+<img width="250"  alt="augmented_1" src="https://github.com/user-attachments/assets/beaf16b9-bc38-42b7-b63f-5e23ec30818b" />
+<img width="250"  alt="augmented_2" src="https://github.com/user-attachments/assets/65fa44b5-aad9-4106-a664-ca3997f6ce05" />
+ 
+   <sub><em>
+65% and 87% vs 63% and 85% of (non augmented training) from exercise 1
+  </em></sub>
+</div>
+
+For an unbalanced loss, **loss = 0.2 * clean_loss + 0.8 * adv_loss**, ....
+<div align="center">
+<img width="250"  alt="augmented_1" src="https://github.com/user-attachments/assets/beaf16b9-bc38-42b7-b63f-5e23ec30818b" />
+<img width="250"  alt="augmented_2" src="https://github.com/user-attachments/assets/65fa44b5-aad9-4106-a664-ca3997f6ce05" />
+ 
+   <sub><em>
+Say something about it
+  </em></sub>
+</div>
+
+## Exercise 3.3
+The goal of this exercise was to generate **targeted** attacks by creating adversarial samples that *imitate* samples from a specific class. Here is a qualitative evaluation of 2 of them, where the target class was "dog":
+
+<div align="center">
+ <img width="700" alt="output_1" src="https://github.com/user-attachments/assets/7066f59b-ef49-4199-acca-5e0f63201f1f" />
+</div>
+
+<div align="center">
+ <img width="700" alt="output_2" src="https://github.com/user-attachments/assets/9f612264-b0fc-4330-b083-09d57f729c59" />
+</div>
+
+For a quantitative evaluation i compared the targeted and non targeted attacks using the 3 metrics introduced in exercise 2.1. The model used to generate images is the same (custom CNN trained in exercise 1) for both types of attacks.
+<div align="center">
+ <img width="700" alt="output_1" src="https://github.com/user-attachments/assets/7066f59b-ef49-4199-acca-5e0f63201f1f" />
+</div>
+TODO: add note about use of genAI
