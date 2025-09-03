@@ -115,6 +115,18 @@ As expected bigger *epsilons* produce more powerful (but also more noticeable) a
 ## Exercise 2.1
 
 In this exercise FGSM adversarial samples are used to augment the training dataset used to train the the OOD detector model. 
-The way i implemented this augmented training is by using a weighted loss function in the training loop. For each batch, I compute the loss on both the original (clean) inputs and the adversarially perturbed inputs, then combine these losses with equal weighting to form a single loss. The weights of the loss components are hyperparameters. 
+The way i implemented this augmented training is by using a weighted loss function in the training loop. For each batch, I compute the loss on both the original (clean) inputs and the adversarially perturbed inputs, then combine them to form a single loss. The weights of the loss components are hyperparameters. 
+
+For an equally weighted loss, **loss = 0.5 * clean_loss + 0.5 * adv_loss**, there is a slight improvement of about 2% in both the ROC and PR curves. 
+
+<div align="center">
+<img width="250"  alt="augmented_1" src="https://github.com/user-attachments/assets/beaf16b9-bc38-42b7-b63f-5e23ec30818b" />
+<img width="250"  alt="augmented_2" src="https://github.com/user-attachments/assets/65fa44b5-aad9-4106-a664-ca3997f6ce05" />
+ 
+   <sub><em>
+65% and 87% vs 63% and 85% of (non augmented training) from exercise 1
+  </em></sub>
+</div>
+
 
 TODO: add note about use of genAI
