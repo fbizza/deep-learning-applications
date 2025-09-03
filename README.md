@@ -1,6 +1,6 @@
 # Work in progress.  La repo sarà completa prima della scadenza all'iscrizione dell'appello.
 
-# Exercise 1.1
+# Exercise 1.1 and 1.2
 The goal of this exercise is to demonstrate the importance of **residual connections**. We do this by evaluating simple MLPs and showing that deeper networks with residual connections are easier to train compared to networks of the same depth without residual connections.  We compare MLPs with a width of 16 and varying depths on the MNIST dataset.
  
 
@@ -38,5 +38,13 @@ The figure below shows the magnitude of gradients as they propagate through the 
 <img width="600"alt="gradients" src="https://github.com/user-attachments/assets/8302cfb4-6fa2-46a0-80fe-98e9e654cc69" />
 </p>
 
-
-
+# Exercise 1.3
+The goal of this exercise is to repeat the analysis from Exercise 1.2, this time using Convolutional Neural Networks trained on CIFAR-10. As expected, we observe improvements when residual connections are used.
+<p align="center">
+ <img width="600"  alt="cnn" src="https://github.com/user-attachments/assets/6dd5cc4a-a69f-4b1e-a061-99520c5ac3e0" />
+</p>
+<p align="center">
+  <sub><em>
+    Accuracy curves during training. The numbers next to each model name indicate the number of residual blocks (with or without skip connections enabled). Models with residual connections achieve consistently higher accuracy than the plain versions.
+  </em></sub>
+</p>
