@@ -75,7 +75,7 @@ We also apply CAM to a pre-trained ResNet-18 on images from the Imagenette datas
 ## Exercise 1
 In this exercise, we build a simple **Out-of-Distribution (OOD) detection pipeline**. The dataset used for in distribution (ID) examples is CIFAR-10, while the OOD datasets are a subset of CIFAR-100 (with classes not present in CIFAR-10) and randomly generated FakeData. For brevity only results using CIFAR-100 are discussed.
 
-The maximum softmax probability is used for representing how OOD a test sample is. It is produced by a custom small CNN and a pretrained ResNet-20 model.
+The maximum softmax probability is used for representing how OOD a test sample is. This probability is produced by a custom small CNN and a pretrained ResNet-20 model that i compare in the following table:
 <div align="center">
  
 |  | Custom CNN | ResNet |
@@ -107,12 +107,13 @@ I used 3 metrics in order to evaluate how dependent on *epsilon* the generated a
 - Average iterations to success
 - Average confidence drop
   
+(All the attacks have a fixed *max_n_iterations = 10*)
 
 <img width="900"  alt="quantitative_eval" src="https://github.com/user-attachments/assets/486d67e3-cdfd-4f95-bb53-0a4c2c4a3a4f" />
 
-As expected bigger *epsilons* produce more powerful (but also more noticeable) attacks 
+As expected bigger *epsilons* produce more powerful (but also more noticeable) attacks .
 
-## Exercise 2.1
+## Exercise 2.2
 
 In this exercise FGSM adversarial samples are used to augment the training dataset used to train the the OOD detector model. 
 The way i implemented this augmented training is by using a weighted loss function in the training loop. For each batch, I compute the loss on both the original (clean) inputs and the adversarially perturbed inputs, then combine them to form a single loss. The weights of the loss components are hyperparameters. 
@@ -128,14 +129,10 @@ For an equally weighted loss, **loss = 0.5 * clean_loss + 0.5 * adv_loss**, ther
   </em></sub>
 </div>
 
-For an unbalanced loss, **loss = 0.2 * clean_loss + 0.8 * adv_loss**, ....
+For an unbalanced loss, **loss = 0.2 * clean_loss + 0.8 * adv_loss**, the performance slightly degrades. This suggests that the hyperparameter weights of the components of the loss might be tricky to tune.
 <div align="center">
-<img width="250"  alt="augmented_1" src="https://github.com/user-attachments/assets/beaf16b9-bc38-42b7-b63f-5e23ec30818b" />
-<img width="250"  alt="augmented_2" src="https://github.com/user-attachments/assets/65fa44b5-aad9-4106-a664-ca3997f6ce05" />
- 
-   <sub><em>
-Say something about it
-  </em></sub>
+<img width="250" alt="output_4" src="https://github.com/user-attachments/assets/22d55e3c-2e8d-4af0-9614-9da5bbf3764a" />
+<img width="250" alt="output_5" src="https://github.com/user-attachments/assets/c688ce89-ccba-43e4-aaca-eb6c0c964c0b" />
 </div>
 
 ## Exercise 3.3
@@ -149,8 +146,15 @@ The goal of this exercise was to generate **targeted** attacks by creating adver
  <img width="700" alt="output_2" src="https://github.com/user-attachments/assets/9f612264-b0fc-4330-b083-09d57f729c59" />
 </div>
 
-For a quantitative evaluation i compared the targeted and non targeted attacks using the 3 metrics introduced in exercise 2.1. The model used to generate images is the same (custom CNN trained in exercise 1) for both types of attacks.
+For a quantitative evaluation i compared the targeted and non targeted attacks using the 3 metrics introduced in exercise 2.1. The model used to generate images is the same (custom CNN trained in exercise 1). For both types of attacks *epsilon = 1/255* and *max_n_iterations = 10*.
+
 <div align="center">
- <img width="700" alt="output_1" src="https://github.com/user-attachments/assets/7066f59b-ef49-4199-acca-5e0f63201f1f" />
+<img width="800"alt="comparison" src="https://github.com/user-attachments/assets/0d09fe44-2035-40a6-aa5c-015481608e24" />
+ 
+ <sub><em>
+As expected, the average confidence drop is larger and the average number of iterations to success is lower for untargeted attacks compared to targeted ones. This behavior arises because untargeted attacks only need to push the sample outside the decision region of the true class, which is a simpler optimization problem. What is surprising is that the success rate is slightly higher for targeted attacks. This might be cause by a particular geometry of the dataset.
+  </em></sub>
 </div>
+
+
 TODO: add note about use of genAI
