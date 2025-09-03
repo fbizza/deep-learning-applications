@@ -63,6 +63,6 @@ CAMs showing which image regions the trained CNN focuses on (CIFAR-10).
 We also apply CAM to a pre-trained ResNet-18 on images from the Imagenette dataset:
 
 <p align="center">
-<img width="850" alt="imagenette_cam_6images" src="https://github.com/user-attachments/assets/75fb30ff-de0c-4856-b595-dc0a002c43e8" />
+<img width="1000" alt="imagenette_cam_6images" src="https://github.com/user-attachments/assets/75fb30ff-de0c-4856-b595-dc0a002c43e8" />
 </p>
 <p align="center">
