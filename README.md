@@ -72,8 +72,8 @@ We also apply CAM to a pre-trained ResNet-18 on images from the Imagenette datas
 
 <h1 align="center">Laboratory 4</h1>
 
-## Exercise 1.1
-In this exercise, we build a simple **Out-of-Distribution (OOD) detection pipeline**. The in distribution (ID) used dataset is CIFAR-10, while the OOD datasets are a subset of CIFAR-100 (with classes not present in CIFAR-10) and randomly generated FakeData. For brevity only results using CIFAR-100 are discussed.
+## Exercise 1
+In this exercise, we build a simple **Out-of-Distribution (OOD) detection pipeline**. The dataset used for in distribution (ID) examples is CIFAR-10, while the OOD datasets are a subset of CIFAR-100 (with classes not present in CIFAR-10) and randomly generated FakeData. For brevity only results using CIFAR-100 are discussed.
 
 The maximum softmax probability is used for representing how OOD a test sample is. It is produced by a custom small CNN and a pretrained ResNet-20 model.
 <div align="center">
@@ -88,8 +88,33 @@ The maximum softmax probability is used for representing how OOD a test sample i
 
 As shown in the plots, the ResNet performs better. This is expected since it also achieves higher classification accuracy on CIFAR-10 (81%) compared to the smaller custom CNN (64%).
 
+## Exercise 2.1
+
+In this exercise the FGSM method is used to generate adversarial examples. The model used  is the custom CNN introduced in the previous exercise.
+Here are shown some examples of adversial attacks generated with an *epsilon* = 1/255:
+<div align="center">
+<img width="700" alt="output1" src="https://github.com/user-attachments/assets/b61235e5-a3d7-419f-8c4a-d0bbdee131c9" />
+</div>
+
+<div align="center">
+<img width="700" alt="output2" src="https://github.com/user-attachments/assets/cf5e0587-9e5c-4080-9692-8c81e84e2c39" />
+</div>
 
 
+I used 3 metrics in order to evaluate how dependent on *epsilon* the generated adversial images are:
 
+- Attack success rate
+- Average iterations to success
+- Average confidence drop
+  
+
+<img width="900"  alt="quantitative_eval" src="https://github.com/user-attachments/assets/486d67e3-cdfd-4f95-bb53-0a4c2c4a3a4f" />
+
+As expected bigger *epsilons* produce more powerful (but also more noticeable) attacks 
+
+## Exercise 2.1
+
+In this exercise FGSM adversarial samples are used to augment the training dataset used to train the the OOD detector model. 
+The way i implemented this augmented training is by using a weighted loss function in the training loop. For each batch, I compute the loss on both the original (clean) inputs and the adversarially perturbed inputs, then combine these losses with equal weighting to form a single loss. The weights of the loss components are hyperparameters. 
 
 TODO: add note about use of genAI
