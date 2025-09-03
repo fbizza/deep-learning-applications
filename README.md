@@ -90,8 +90,8 @@ As shown in the plots, the ResNet performs better. This is expected since it als
 
 ## Exercise 2.1
 
-In this exercise the FGSM method is used to generate adversarial examples. The model used  is the custom CNN introduced in the previous exercise.
-Here are shown some examples of adversial attacks generated with an *epsilon* = 1/255:
+In this exercise the **FGSM** method is used to generate adversarial examples. The model used  is the custom CNN introduced in the previous exercise.
+Here are shown some examples of adversarial attacks generated with an *epsilon* = 1/255:
 <div align="center">
 <img width="700" alt="output1" src="https://github.com/user-attachments/assets/b61235e5-a3d7-419f-8c4a-d0bbdee131c9" />
 </div>
@@ -101,7 +101,7 @@ Here are shown some examples of adversial attacks generated with an *epsilon* = 
 </div>
 
 
-I used 3 metrics in order to evaluate how dependent on *epsilon* the generated adversial images are:
+I used 3 metrics in order to evaluate how dependent on *epsilon* the generated adversarial images are:
 
 - Attack success rate
 - Average iterations to success
@@ -128,5 +128,29 @@ For an equally weighted loss, **loss = 0.5 * clean_loss + 0.5 * adv_loss**, ther
   </em></sub>
 </div>
 
+For an unbalanced loss, **loss = 0.2 * clean_loss + 0.8 * adv_loss**, ....
+<div align="center">
+<img width="250"  alt="augmented_1" src="https://github.com/user-attachments/assets/beaf16b9-bc38-42b7-b63f-5e23ec30818b" />
+<img width="250"  alt="augmented_2" src="https://github.com/user-attachments/assets/65fa44b5-aad9-4106-a664-ca3997f6ce05" />
+ 
+   <sub><em>
+Say something about it
+  </em></sub>
+</div>
 
+## Exercise 3.3
+The goal of this exercise was to generate **targeted** attacks by creating adversarial samples that *imitate* samples from a specific class. Here is a qualitative evaluation of 2 of them, where the target class was "dog":
+
+<div align="center">
+ <img width="700" alt="output_1" src="https://github.com/user-attachments/assets/7066f59b-ef49-4199-acca-5e0f63201f1f" />
+</div>
+
+<div align="center">
+ <img width="700" alt="output_2" src="https://github.com/user-attachments/assets/9f612264-b0fc-4330-b083-09d57f729c59" />
+</div>
+
+For a quantitative evaluation i compared the targeted and non targeted attacks using the 3 metrics introduced in exercise 2.1. The model used to generate images is the same (custom CNN trained in exercise 1) for both types of attacks.
+<div align="center">
+ <img width="700" alt="output_1" src="https://github.com/user-attachments/assets/7066f59b-ef49-4199-acca-5e0f63201f1f" />
+</div>
 TODO: add note about use of genAI
