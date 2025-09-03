@@ -1,6 +1,7 @@
 # Work in progress.  La repo sarà completa prima della scadenza all'iscrizione dell'appello.
+<h1 align="center">Laboratory 1</h1>
 
-# Exercise 1.1 and 1.2
+## Exercise 1.1 and 1.2
 The goal of this exercise is to demonstrate the importance of **residual connections**. We do this by evaluating simple MLPs and showing that deeper networks with residual connections are easier to train compared to networks of the same depth without residual connections.  We compare MLPs with a width of 16 and varying depths on the MNIST dataset.
  
 
@@ -38,7 +39,7 @@ The figure below shows the magnitude of gradients as they propagate through the 
 <img width="600"alt="gradients" src="https://github.com/user-attachments/assets/8302cfb4-6fa2-46a0-80fe-98e9e654cc69" />
 </p>
 
-# Exercise 1.3
+## Exercise 1.3
 The goal of this exercise is to repeat the analysis from Exercise 1.2, this time using Convolutional Neural Networks trained on CIFAR-10. As expected, we observe improvements when residual connections are used.
 <p align="center">
  <img width="650"  alt="cnn" src="https://github.com/user-attachments/assets/6dd5cc4a-a69f-4b1e-a061-99520c5ac3e0" />
@@ -49,7 +50,7 @@ The goal of this exercise is to repeat the analysis from Exercise 1.2, this time
   </em></sub>
 </p>
 
-# Exercise 2.3  
+## Exercise 2.3  
 The goal of this exercise is to explain the predictions of a CNN by visualizing **Class Activation Maps (CAMs)**. We use the CNN trained in Exercise 1.3 and extend it with CAM to highlight which regions of the input image contribute most to the model’s classification decision. 
 <p align="center">
 <img width="1000" alt="cifar10_cam_6images" src="https://github.com/user-attachments/assets/52d48dfd-bbd3-45d7-8690-6d26b250def2" />
