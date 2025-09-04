@@ -152,7 +152,7 @@ For a quantitative evaluation i compared the targeted and non targeted attacks u
 <img width="800"alt="comparison" src="https://github.com/user-attachments/assets/0d09fe44-2035-40a6-aa5c-015481608e24" />
  
  <sub><em>
-As expected, the average confidence drop is larger and the average number of iterations to success is lower for untargeted attacks compared to targeted ones. This behavior arises because untargeted attacks only need to push the sample outside the decision region of the true class, which is a simpler optimization problem. What is surprising is that the success rate is slightly higher for targeted attacks. This might be cause by a particular geometry of the dataset.
+As expected, the average confidence drop is larger and the average number of iterations to success is lower for untargeted attacks compared to targeted ones. This behavior arises because untargeted attacks only need to push the sample outside the decision region of the true class, which is a simpler optimization problem. What is surprising is that the success rate is slightly higher for targeted attacks. This might be the effect of the augmented training done during exercise 2.2, where the augmentation was based on targeted attacks.
   </em></sub>
 </div>
 
