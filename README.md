@@ -146,7 +146,7 @@ The goal of this exercise was to generate **targeted** attacks by creating adver
  <img width="700" alt="output_2" src="https://github.com/user-attachments/assets/9f612264-b0fc-4330-b083-09d57f729c59" />
 </div>
 
-For a quantitative evaluation i compared the targeted and non targeted attacks using the 3 metrics introduced in exercise 2.1. The model used to generate images is the same (custom CNN trained in exercise 1). For both types of attacks *epsilon = 1/255* and *max_n_iterations = 10*.
+For a quantitative evaluation i compared the targeted and non targeted attacks using the 3 metrics introduced in exercise 2.1. The model used to generate images is the same (custom CNN trained in exercise 2.2). For both types of attacks *epsilon = 1/255* and *max_n_iterations = 10*.
 
 <div align="center">
 <img width="800"alt="comparison" src="https://github.com/user-attachments/assets/0d09fe44-2035-40a6-aa5c-015481608e24" />
