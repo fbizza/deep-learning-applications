@@ -74,7 +74,7 @@ We also apply CAM to a pre-trained ResNet-18 on images from the Imagenette datas
 ## Exercise 1
 The focus of this exercise was to build a stable baseline for the next exercises. The task is sentiment analysis on the Rotten Tomatoes dataset. 
 
-- A pretrained DistilBERT was used as feature extractor
+- A pretrained **DistilBERT** was used as feature extractor
 - With a SVM classifier attached on top of it
 
 <div align="center">
@@ -106,7 +106,7 @@ By doing some pre-processing and using HuggingFace [Trainer](https://huggingface
 </div>
 
 ## Exercise 3
-In this exercise, we first use a small CLIP model, [`openai/clip-vit-base-patch16`](https://huggingface.co/openai/clip-vit-base-patch16), to evaluate its zero-shot performance on the tiny-imagenet dataset:
+In this exercise, we first use a small **CLIP** model, [`openai/clip-vit-base-patch16`](https://huggingface.co/openai/clip-vit-base-patch16), to evaluate its zero-shot performance on the tiny-imagenet dataset:
 
 <div align="center">
  
@@ -126,6 +126,29 @@ interestingly, just by adding *"A photo of a {label}"* in front of the text prom
 
 </div>
 
+Using Low-Rank Adaptation ([LoRA](https://huggingface.co/docs/peft/package_reference/lora)) and fine-tuning the attention layers of **both** the text and image encoder we achive:
+
+<div align="center">
+
+| Accuracy |
+|:--------:|
+| **0.76**   |
+
+<sub><em>
+(Best model across 5 fine-tuning epochs)
+  </em></sub>
+  
+</div>
+
+While fine tuining only one of the encoders leads to:
+
+<div align="center">
+ 
+| Accuracy (fine-tune Image Encoder only) | Encoder (fine-tune Text Encoder only)|
+|:--------:| :--------:|
+| 0.72   | 0.73 |
+
+</div>
 
 
 <h1 align="center">Laboratory 4</h1>
