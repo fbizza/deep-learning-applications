@@ -1,5 +1,11 @@
 # deep-learning-applications
-This repository contains the code developed to solve the exercises for the Deep Learning Applications course (2024/25). The results are presented below
+
+<div align="center">
+ 
+This repository contains the code developed to solve the exercises of the Deep Learning Applications course (2024/25). 
+
+</div>
+
 <h1 align="center">Laboratory 1</h1>
 
 ## Exercise 1.1 and 1.2
@@ -105,7 +111,7 @@ By doing some pre-processing and using HuggingFace [Trainer](https://huggingface
   
 </div>
 
-## Exercise 3
+## Exercise 3.2
 In this exercise, we first use a small **CLIP** model, [`openai/clip-vit-base-patch16`](https://huggingface.co/openai/clip-vit-base-patch16), to evaluate its zero-shot performance on the tiny-imagenet dataset:
 
 <div align="center">
@@ -140,7 +146,7 @@ Using Low-Rank Adaptation ([LoRA](https://huggingface.co/docs/peft/package_refer
   
 </div>
 
-While fine tuining only one of the encoders leads to:
+While fine-tuning only one of the encoders leads to:
 
 <div align="center">
  
@@ -150,6 +156,54 @@ While fine tuining only one of the encoders leads to:
 
 </div>
 
+---
+
+
+I also experimented with a similar methodology on an art dataset [Art Style Classification](https://www.kaggle.com/code/jaafaryassine/art-style-classification).
+
+The goal is to classify paintings into one of the following five categories:  
+- **Portrait**  
+- **Landscape**  
+- **Abstract**  
+- **Religious Painting**  
+- **Cityscape**  
+
+The Zero-shot Performance of CLIP is:
+
+<div align="center">
+
+| Zero-shot Accuracy |
+|:-----------------:| 
+| 0.87              |
+
+</div>
+
+
+<div align="center">
+ 
+<img width="450" alt="output" src="https://github.com/user-attachments/assets/24429773-671b-4ad9-9759-a701a9b237c4" />
+
+<sub><em>
+(Example of misclassification)
+ </em></sub>
+ 
+</div>
+
+---
+
+The performance after fine-tuning with LoRA increases up to: 
+
+<div align="center">
+
+| Accuracy |
+|:--------:| 
+| 0.92 **(+5%)** |
+
+<sub><em>
+(Fine-tuning performed on both encoders)
+  </em></sub>
+
+</div>
 
 <h1 align="center">Laboratory 4</h1>
 
@@ -237,5 +291,16 @@ As expected, the average confidence drop is larger and the average number of ite
   </em></sub>
 </div>
 
+<div align="center">
 
-TODO: add note about use of genAI
+
+ ---
+ 
+> **Note:** Some parts of the code in this project were generated with the assistance of generative AI tools.  
+> For example, almost all of the code for the plots was AI-generated.  
+> All AI-generated code was carefully reviewed and rechecked to ensure it executed as intended.  
+> Moreover, I often used AI for debugging errors, especially issues related to tensor shapes or out-of-index errors.
+
+
+</div>
+
