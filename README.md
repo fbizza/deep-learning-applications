@@ -69,6 +69,87 @@ We also apply CAM to a pre-trained ResNet-18 on images from the Imagenette datas
 </p>
 <p align="center">
 
+<h1 align="center">Laboratory 3</h1>
+
+## Exercise 1
+The focus of this exercise was to build a stable baseline for the next exercises. The task is sentiment analysis on the Rotten Tomatoes dataset. 
+
+- A pretrained **DistilBERT** was used as feature extractor
+- With a SVM classifier attached on top of it
+
+<div align="center">
+ 
+| Accuracy |
+|:--------:|
+|   0.82   |
+
+<sub><em>
+(on validation data)
+  </em></sub>
+
+</div>
+
+## Exercise 2
+In this exercise the pretrained DistilBERT model was fine tuned in order to achive higher accuracy compared to the baseline introduced above.
+By doing some pre-processing and using HuggingFace [Trainer](https://huggingface.co/docs/transformers/main/en/trainer) the model achived:
+
+<div align="center">
+ 
+| Accuracy |
+|:--------:|
+| 0.84 **(+2%)**   |
+
+<sub><em>
+(Best model across 30 fine-tuning epochs)
+  </em></sub>
+  
+</div>
+
+## Exercise 3
+In this exercise, we first use a small **CLIP** model, [`openai/clip-vit-base-patch16`](https://huggingface.co/openai/clip-vit-base-patch16), to evaluate its zero-shot performance on the tiny-imagenet dataset:
+
+<div align="center">
+ 
+| Zero-shot Accuracy |
+|:--------:|
+| 0.63  |
+
+</div>
+
+interestingly, just by adding *"A photo of a {label}"* in front of the text prompts we achive:
+
+<div align="center">
+ 
+| Zero-shot Accuracy |
+|:--------:|
+| 0.70 **(+7%)**  |
+
+</div>
+
+Using Low-Rank Adaptation ([LoRA](https://huggingface.co/docs/peft/package_reference/lora)) and fine-tuning the attention layers of **both** the text and image encoder we achive:
+
+<div align="center">
+
+| Accuracy |
+|:--------:|
+| **0.76**   |
+
+<sub><em>
+(Best model across 5 fine-tuning epochs)
+  </em></sub>
+  
+</div>
+
+While fine tuining only one of the encoders leads to:
+
+<div align="center">
+ 
+| Accuracy (fine-tune Image Encoder only) | Encoder (fine-tune Text Encoder only)|
+|:--------:| :--------:|
+| 0.72   | 0.73 |
+
+</div>
+
 
 <h1 align="center">Laboratory 4</h1>
 
